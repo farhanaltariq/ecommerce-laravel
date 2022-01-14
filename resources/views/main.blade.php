@@ -1,5 +1,5 @@
 @if (auth()->user()->level == "admin")
-    {{  header("location: products") }}
+    {{  redirect()->to('products')->send(); }}
 @else
-    {{ header("location: catalogue") }}
+    {{ redirect()->to('catalogue')->send(); }}
 @endif
