@@ -44,10 +44,10 @@ class ProductController extends Controller
     {
         $validate = $request->validate( [
             'tipe'      => 'required',
-            'harga'     => 'required|number',
-            'ukuran'    => 'required|number',
-            'stok'      => 'required|number',
-            'gambar'    => 'required'
+            'harga'     => 'required|numeric',
+            'ukuran'    => 'required|numeric',
+            'stok'      => 'required|numeric',
+            'gambar'    => 'required|image'
         ]);
         $nm = $request->gambar;
         $fileName = time().rand(100,999).'.'.$nm->getClientOriginalExtension();

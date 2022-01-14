@@ -28,7 +28,7 @@
                                 {!! NoCaptcha::renderJs() !!}
                                 @error('g-recaptcha-response')
                                     <div class="text-danger">
-                                         "Captcha required" 
+                                         Captcha required 
                                     </div>
                                 @enderror
                             </div>

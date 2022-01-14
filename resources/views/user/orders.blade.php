@@ -2,11 +2,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
     <div class="mt-5">
-      <div class="d-style rounded btn-brc-tp border-2 bgc-white w-100 my-2 py-3 shadow-sm">
+      <div class="d-style rounded btn-brc-tp border-2 bgc-white shadow-sm">
         {{-- {{ dd($order->product) }} --}}
         @foreach ($order as $item)
             
-        <div class="row align-items-center bg-secondary text-light rounded mb-3 pt-2 pb-1">
+        <div class="row align-items-center bg-secondary text-light rounded">
           <div class="col-12 col-md-4">
               <img src="{{ asset('img/'.$item->product->img) }}" width="60px" height="60px" alt="image">
             </div>

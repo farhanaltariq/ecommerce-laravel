@@ -129,8 +129,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <td>{{ $item->id_order }}</td>
                     <td>{{ $item->email }}</td>
                     {{-- <td>{{ $item->users }}</td> --}}
+                    <td>{{ $item->product->tipe }}</td>
                     <td>{{ $item->product->harga }}</td>
-                    <td>{{ $item->product->ukuran }}</td>
                     <td><img width="40px" height="40px" src="{{ asset('img/'.$item->product->img) }}" alt="gambar"></td>
                     <td>
                       <a style="color: red" href="{{ url('delete-order',$item->id_order) }}"><i class="fas fa-trash-alt"></i></a>
