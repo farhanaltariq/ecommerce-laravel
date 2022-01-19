@@ -123,15 +123,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </tr>
                 </thead>
                 <tbody>
-                    {{-- {{ dd($order->all()) }} --}}
+                    {{-- {{ dump($order->first()->product->first()->tipe) }} --}}
                   @foreach ($order as $item)                      
                   <tr>
                     <td>{{ $item->id_order }}</td>
                     <td>{{ $item->email }}</td>
                     {{-- <td>{{ $item->users }}</td> --}}
-                    <td>{{ $item->product->tipe }}</td>
-                    <td>{{ $item->product->harga }}</td>
-                    <td><img width="40px" height="40px" src="{{ asset('img/'.$item->product->img) }}" alt="gambar"></td>
+                    <td>{{ $item->product->tipe ?? null }}</td>
+                    <td>{{ $item->product->harga ?? null }}</td>
+                    @php
+                        $image = $item->product->img ?? null
+                    @endphp
+                    <td><img width="40px" height="40px" src="{{ asset('img/'.$image) }}" alt="gambar"></td>
                     <td>
                       <a style="color: red" href="{{ url('delete-order',$item->id_order) }}"><i class="fas fa-trash-alt"></i></a>
                     </td>
