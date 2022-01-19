@@ -37,6 +37,7 @@
         </div>
         @endforeach
 
+        <a href="{{ route('checkout') }}">Bayar</a>
       </div>
 
       </div>

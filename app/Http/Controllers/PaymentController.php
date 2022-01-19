@@ -13,6 +13,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
+        return view('User.checkout');
     }
 
     /**
@@ -22,7 +23,6 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        return view('User.checkout');
         //
     }
 

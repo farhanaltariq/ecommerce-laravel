@@ -115,26 +115,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Email</th>
-                    {{-- <th scope="col">Nama</th> --}}
+                    <th scope="col">Nama Pemesan</th>
                     <th scope="col">Tipe</th>
                     <th scope="col">Harga</th>
                     <th scope="col"></th>
+                    <th scope="col">Pembayaran</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                     {{-- {{ dump($order->first()->product->first()->tipe) }} --}}
-                  @foreach ($order as $item)                      
+                  @foreach ($order as $item)        
+                  @php
+                      $data = DB::select("SELECT name FROM users WHERE email LIKE '$item->email'");
+                      // dd($data[0]);
+                      $images = DB::select("SELECT payment_img FROM payments WHERE email LIKE '$item->email'");
+                      // dump($images);
+                      $img = $images[0]->payment_img ?? null;
+                  @endphp              
                   <tr>
                     <td>{{ $item->id_order }}</td>
                     <td>{{ $item->email }}</td>
-                    {{-- <td>{{ $item->users }}</td> --}}
-                    <td>{{ $item->product->tipe ?? null }}</td>
-                    <td>{{ $item->product->harga ?? null }}</td>
-                    @php
-                        $image = $item->product->img ?? null
-                    @endphp
-                    <td><img width="40px" height="40px" src="{{ asset('img/'.$image) }}" alt="gambar"></td>
+                    {{-- {{ dd($item->user) }} --}}
+                    <td>{{ $data[0]->name }}</td>
+                    <td>{{ $item->product->tipe }}</td>
+                    <td>{{ $item->product->harga }}</td>
+                    <td><a href="{{ asset('img/'.$item->product->img) }}"><img width="40px" height="40px" src="{{ asset('img/'.$item->product->img) }}" alt="gambar"></a></td>
+                    <td>
+                      @if ($img !== null)
+                        <a href="{{ asset('img/payment/'.$img) }}">
+                      @endif
+                      <img width="40px" height="40px" src="{{ asset('img/payment/'.$img) }}" alt="Tidak Ada">
+                      @if ($img !== null)
+                        </a>
+                      @endif
+                    </td>
                     <td>
                       <a style="color: red" href="{{ url('delete-order',$item->id_order) }}"><i class="fas fa-trash-alt"></i></a>
                     </td>

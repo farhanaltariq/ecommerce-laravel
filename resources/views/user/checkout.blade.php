@@ -18,12 +18,12 @@
 <div class="mb-3 row">
 <!-- Insert Data Here -->
 
-<form action="{{ route('createPayment') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('createPayment') }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     <input type="file" name="image" Required><br><br>
     <input type="submit" name="submit" value="Upload">
 </form>
-<center>*Note : Jika ada kesalahan upload pembayaran, silahkan kontak administrator</center>
+<center>*Note : Jika ada kesalahan upload pembayaran, silahkan upload ulang</center>
 @if (isset($msg))
     
 <p>

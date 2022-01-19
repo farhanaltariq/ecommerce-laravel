@@ -17,6 +17,6 @@ class Order extends Model
         return $this->belongsTo(Product::class, 'product_id');
     }
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'email');
     }
 }
