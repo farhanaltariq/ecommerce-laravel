@@ -32,7 +32,7 @@ Route::middleware(['auth', 'CekLevel:admin,user'])->group(function () {
     Route::get('/save-order/{id}', [App\Http\Controllers\OrderController::class, 'store'])->name('createOrder');
     Route::get('/delete-order/{id}', [App\Http\Controllers\OrderController::class, 'destroy'])->name('deleteOrder');
     Route::get('/checkout', [App\Http\Controllers\PaymentController::class, 'index'])->name('checkout');
-    Route::post('/save-payment', [App\Http\Controllers\PaymentController::class, 'store'])->name('createPayment');
+    Route::get('/save-payment', [App\Http\Controllers\PaymentController::class, 'store'])->name('createPayment');
 });
 Route::middleware(['auth', 'CekLevel:admin'])->group(function () {
     Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');

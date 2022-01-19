@@ -18,12 +18,15 @@
 <div class="mb-3 row">
 <!-- Insert Data Here -->
 
-<form action="{{ route('createPayment') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('createPayment') }}" method="GET" enctype="multipart/form-data">
     {{ csrf_field() }}
     <input type="file" name="image" Required><br><br>
     <input type="submit" name="submit" value="Upload">
 </form>
 <center>*Note : Jika ada kesalahan upload pembayaran, silahkan upload ulang</center>
+@error('image')
+    <center class="text-danger mt-2"><h5>Format file tidak didukung</h5></center>
+@enderror
 @if (isset($msg))
     
 <p>
