@@ -129,7 +129,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   @php
                       $data = DB::select("SELECT name FROM users WHERE email LIKE '$item->email'");
                       // dd($data[0]);
-                      $images = DB::select("SELECT payment_img FROM payments WHERE email LIKE '$item->email'");
+                      $qry = "SELECT payment_img FROM payments WHERE email LIKE '$item->email' ORDER BY id_payment DESC";
+                      $images = DB::select($qry);
                       // dump($images);
                       $img = $images[0]->payment_img ?? null;
                   @endphp              
@@ -146,6 +147,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="{{ asset('img/payment/'.$img) }}">
                       @endif
                       <img width="40px" height="40px" src="{{ asset('img/payment/'.$img) }}" alt="Tidak Ada">
+                      {{-- {{ $qry }} --}}
                       @if ($img !== null)
                         </a>
                       @endif
